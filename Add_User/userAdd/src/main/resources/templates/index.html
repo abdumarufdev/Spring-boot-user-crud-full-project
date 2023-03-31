@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>project one</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: abdumarufdev.uz
+  * Template URL: https://abduma.com/resi-free-bootstrap-html-template/
+  * Author: abdumarufdev.uz
+  * License: https://abdumarufdev.uz/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo" id="logo"><a >abdumarufdev.</a></h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="getstarted scrollto" data-bs-toggle="modal" data-bs-target="#userAddModalId" >Add <i class="bi bi-plus-circle-fill" style="font-size: 20px;"></i></a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12" style="overflow-x: scroll; max-width: 100%; min-width: 300px;">
+          <table class="table table-hover border" id="table" style="min-width: max-content;">
+            <thead style="background: #2a2af0; color: white;">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Edit | Delete</th>
+              </tr>
+            </thead>
+            <tbody style="color: #2a2af0;">
+
+              <tr th:each="user : ${Users}">
+                <td th:text = "${user.id}"></td>
+                <td th:text = "${user.firstname}"></td>
+                <td th:text = "${user.lastname}"></td>
+                <td th:text = "${user.date}"></td>
+                <td>
+                  <a class="editeButtonUserId btn btn-success" id="editeButtonUserId" data-bs-toggle="modal" data-bs-target="#userEditModalId" >Edite<i class="bi bi-pencil-square px-2" ></i></a>
+
+                  <a class="deleteButtonUserId btn btn-danger" id="deleteButtonUserId"  >Delete<i class="bi bi-trash3-fill px-2"></i></a>
+                </td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <section>
+
+      <!-- Modal -->
+      <div class="modal fade" id="userAddModalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" style="background: #2a2af0; color: white;">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Add user</h1>
+              <!-- <button type="button text-white" style="color: white;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+              
+            <form id="formId">
+              <label for="firsname">First name</label>
+              <div class="input-group my-2">
+                <input type="text" id="firsname" name="firsname" aria-label="First name" class="form-control" required placeholder="Enter first name...">
+              </div>
+              <!-- <p id="error-one"></p> -->
+
+
+              <label for="lastname">Last name</label>
+              <div class="input-group my-2">
+                <input type="text" id="lastname" name="lastname" aria-label="Last name" class="form-control" required placeholder="Enter first name...">
+              </div>
+              <!-- <p id="error-two"></p> -->
+
+              <label for="date">Date</label>
+              <div class="input-group my-2">
+                <input type="date" id="date" name="date" aria-label="Date" class="form-control" required placeholder="Enter first date...">
+              </div>
+              <!-- <p id="error-three"></p> -->
+            </form>
+
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="close" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn" id="addButtonUserId" style="background: #2a2af0; color: white;">Add user</button>
+            </div>
+          </div>
+        </div>
+      </div> 
+  </section>
+
+  <section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="userEditModalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background: #2a2af0; color: white;">
+            <h1 class="modal-title fs-5">Edite user</h1>
+            <!-- <button type="button text-white" style="color: white;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+          </div>
+          <div class="modal-body">
+
+            <form id="editFormId">
+              <label for="firsname">First name</label>
+              <div class="input-group my-2">
+                <input type="text" id="editFirstname" name="editFirstname" aria-label="First name" class="form-control" required placeholder="Enter first name...">
+              </div>
+              <!-- <p id="error-one"></p> -->
+
+              <label for="lastname">Last name</label>
+              <div class="input-group my-2">
+                <input type="text" id="editeLastname" name="editeLastname" aria-label="Last name" class="form-control" required placeholder="Enter first name...">
+              </div>
+              <!-- <p id="error-two"></p> -->
+
+              <label for="date">Date</label>
+              <div class="input-group my-2">
+                <input type="date" id="editeDate" name="editeDate" aria-label="Date" class="form-control" required placeholder="Enter first date...">
+              </div>
+              <!-- <p id="error-three"></p> -->
+              <input id="editeId" name="editeId" style="display: none">
+            </form>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="editeCloseButtonId" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn" id="inUserEditeId" style="background: #2a2af0; color: white;">Edite user</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="container py-4">
+
+      <div class="text-center">
+        <div class="copyright">
+          &copy; <strong><span>abdumarufdev</span>.uz</strong>
+        </div>
+        <div class="credits">
+          Designed by <a href="https://abdumarufdev.uz/">abdumarufdev.uz</a>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+
+    var baseUrl = window.location.origin;
+
+    // DELETE
+
+    var dataDelete
+    $("#table").on("click","tbody tr #deleteButtonUserId", function (e){
+      $tr=$(this).closest('tr');
+      dataDelete = $tr.children("td").map(function (){
+        return $(this).text();
+      }).get();
+    });
+
+    $(document).on("click","#deleteButtonUserId", function (){
+
+      Swal.fire({
+        title: 'Delete',
+        text: "Malumotni ochirmoqchimisiz?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Delete'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+                    $.ajax({
+                        url: baseUrl+"/api/delete/user/"+dataDelete[0]+"",
+                        type: "DELETE",
+                        success: function (){
+                            window.location = "/home";
+                        },
+                        error: function (error){
+                          Swal.fire(
+                                  'Error!',
+                                  'Serverda hatolik.',
+                                  'error'
+                          )
+                        }
+                    })
+        }
+      })
+    })
+
+    // EDITE
+
+    $("#table").on("click","tbody tr #editeButtonUserId", function (e){
+      $tr=$(this).closest('tr');
+      var editObject = $tr.children("td").map(function (){
+        return $(this).text();
+      }).get();
+
+      console.log(editObject)
+      if (editObject[0]!=null){
+        $('#editeId').val(editObject[0])
+        $('#editFirstname').val(editObject[1]);
+        $('#editeLastname').val(editObject[2]);
+        $('#editeDate').val(editObject[3]);
+        // $('#editMadol').modal('show');
+      }
+    });
+
+    $(document).ready(function(){
+      $(document).on('click','#inUserEditeId',function(){
+        var baseUrl = window.location.origin;
+
+        var from=$('#editFormId')[0];
+        var data1=new FormData(from);
+
+        var editFirstname = $('#editFirstname').val();
+        var editeLastname = $('#editeLastname').val();
+        var editeDate = $('#editeDate').val();
+
+        if(editFirstname!="" && editeLastname!="" && editeDate!=""){
+
+          $.ajax({
+            url:baseUrl+"/api/edite/user",
+            type: 'PUT',
+            enctype: 'multipart/form-data',
+            data: data1,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data , status , info){
+
+              if (info.status==" 200"){
+
+                alert(data);
+
+                $('#userEditModalId').modal('hide');
+
+                $('#editFirstname').val("");
+                $('#editeLastname').val("");
+                $('#editeDate').val("");
+
+                window.location = "/home"
+
+
+              }else if (info.status==" 208"){
+
+                alert(data);
+
+                $('#editFirstname').val("");
+                $('#editeLastname').val("");
+                $('#editeDate').val("");
+
+              }
+            },
+            error: function (error){
+              alert("Error:"+error)
+              console.log(error);
+            }
+          })
+
+        }else{
+          alert("Maydonlarni to'ldiring!")
+        }
+      })
+    });
+
+    // ADD
+
+    $(document).ready(function(){
+      $(document).on('click','#addButtonUserId',function(){
+
+        var baseUrl = window.location.origin;
+
+        var from=$('#formId')[0];
+        var data1=new FormData(from);
+
+        var firstname = $('#firsname').val();
+        var lastname = $('#lastname').val();
+        var date = $('#date').val();
+
+
+        if(firstname!="" && lastname!="" && date!=""){
+          $.ajax({
+            url:baseUrl+"/api/add/user",
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            data: data1,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data , status , info){
+              if (info.status==" 200"){
+
+                alert(data);
+
+                $('#firsname').val("");
+                $('#lastname').val("");
+                $('#date').val("");
+
+                $('#userAddModalId').modal('hide');
+
+                window.location = "/home";
+
+              }else if (info.status==" 208"){
+
+                alert(data)
+
+                $('#firsname').val("");
+                $('#lastname').val("");
+                $('#date').val("");
+              }
+            },
+            error: function (error){
+              swal({
+                title: "Error",
+                text: "Error!",
+                icon: "error",
+                button: "Yopish",
+              });
+              console.log(error);
+            }
+          })
+
+        }else{
+          alert("Maydonlarni to'ldiring!")
+        }
+      })
+    })
+
+    $(document).on('click','#close',function(){
+      $('#firsname').val("");
+      $('#lastname').val("");
+      $('#date').val("");
+    })
+
+
+  </script>
+</body>
+
+</html>
